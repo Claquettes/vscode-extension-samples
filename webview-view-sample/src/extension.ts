@@ -105,10 +105,7 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 				<title>Cat Colors</title>
 			</head>
 			<body>
-				<ul class="color-list">
-				</ul>
-				<button class="add-color-button">Add Color</button>
-				//we display a image of a cat
+				<button class="add-color-button">Change Cat</button>
 				<img id="grass_image" src="${grassPath}" alt="grass" width="100" height="100">
 				<script nonce="${nonce}" src="${scriptUri}"></script>
 			</body>

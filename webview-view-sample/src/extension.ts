@@ -71,10 +71,21 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 	}
 	
 	private _getHtmlForWebview(webview: vscode.Webview) {
-		//we get the path of the image, 50% of the time it will be a cat, 50% of the time it will be a dog
-		const catPath = Math.random() > 0.5 ? webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'cat2.png')) : webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'graou.png'));
+		const catArray = [
+			'cat2.png',
+			'cat3.png',
+			'cat4.png',
+			'graou.png',
+
+		];
+		//we create the catPath variable to store the path to the cat image; and the generateRandomCatPath function to generate a random cat image path.
 		
-	
+		const generateRandomCatPath = () => {
+			const catIndex = Math.floor(Math.random() * catArray.length);
+			return webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', catArray[catIndex]));
+		};
+
+		const catPath = generateRandomCatPath();
 		// Get the local path to main script run in the webview, then convert it to a uri we can use in the webview.
 		const scriptUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'main.js'));
 
@@ -85,8 +96,6 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 
 		// Use a nonce to only allow a specific script to be run.
 		const nonce = getNonce();
-		
-		//function that will change the cat image every 2 seconds, by modifying the catPath
 		
 		return `<!DOCTYPE html>
 			<html lang="en">

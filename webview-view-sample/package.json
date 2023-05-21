@@ -19,7 +19,10 @@
 	"categories": [
 		"Other"
 	],
-	"activationEvents": [],
+	"activationEvents": [
+		"onCommand:calicoColors.addColor",
+		"onCommand:calicoColors.clearColors"
+	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"views": {

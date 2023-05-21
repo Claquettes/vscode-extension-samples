@@ -38,3 +38,8 @@ body {
 	border: none;
 	margin: 0 auto;
 }
+
+.cat{
+	width: 200px;
+	height: 200px;
+}

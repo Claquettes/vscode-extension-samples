@@ -4,7 +4,7 @@
 // It cannot access the main VS Code APIs directly.
 (function () {
     const vscode = acquireVsCodeApi();
-
+    //we put the path to the images in the array
     const oldState = vscode.getState() || { colors: [] };
 
     /** @type {Array<{ value: string }>} */
@@ -90,7 +90,6 @@
         const colors = ['020202', 'f1eeee', 'a85b20', 'daab70', 'efcb99'];
         return colors[Math.floor(Math.random() * colors.length)];
     }
-
     function addColor() {
         colors.push({ value: getNewCalicoColor() });
         updateColorList(colors);

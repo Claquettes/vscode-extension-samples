@@ -69,8 +69,12 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 			this._view.webview.postMessage({ type: 'clearColors' });
 		}
 	}
-
+	
 	private _getHtmlForWebview(webview: vscode.Webview) {
+		//we get the path of the image, 50% of the time it will be a cat, 50% of the time it will be a dog
+		const catPath = Math.random() > 0.5 ? webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'cat2.png')) : webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'graou.png'));
+		
+	
 		// Get the local path to main script run in the webview, then convert it to a uri we can use in the webview.
 		const scriptUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'main.js'));
 
@@ -82,8 +86,8 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 		// Use a nonce to only allow a specific script to be run.
 		const nonce = getNonce();
 		
-		//we get the path of the image
-		const grassPath = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'graou.png'));
+		//function that will change the cat image every 2 seconds, by modifying the catPath
+		
 		return `<!DOCTYPE html>
 			<html lang="en">
 			<head>
@@ -94,7 +98,7 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 					and only allow scripts that have a specific nonce.
 					(See the 'webview-sample' extension sample for img-src content security policy examples)
 				-->
-				<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource}; script-src 'nonce-${nonce}'; img-src ${webview.cspSource} ${grassPath};">
+				<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource}; script-src 'nonce-${nonce}'; img-src ${webview.cspSource} ${catPath};">
 
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -106,7 +110,10 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 			</head>
 			<body>
 				<button class="add-color-button">Change Cat</button>
-				<img id="grass_image" src="${grassPath}" alt="grass" width="100" height="100">
+				<div id="cats">
+					<img id="cat" src="${catPath}">
+				</div>
+				
 				<script nonce="${nonce}" src="${scriptUri}"></script>
 			</body>
 			</html>`;

@@ -83,7 +83,7 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 		const nonce = getNonce();
 		
 		//we get the path of the image
-		const catPath = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'graou.png'));
+		const grassPath = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'graou.png'));
 		return `<!DOCTYPE html>
 			<html lang="en">
 			<head>
@@ -94,7 +94,7 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 					and only allow scripts that have a specific nonce.
 					(See the 'webview-sample' extension sample for img-src content security policy examples)
 				-->
-				<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource}; script-src 'nonce-${nonce}'; img-src ${webview.cspSource} ${catPath};">
+				<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource}; script-src 'nonce-${nonce}'; img-src ${webview.cspSource} ${grassPath};">
 
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -107,12 +107,10 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 			<body>
 				<ul class="color-list">
 				</ul>
-				<button class="add-color-button">Change cat</button>
-				
-				<img id="cat" src="" alt="cat">
+				<button class="add-color-button">Add Color</button>
+				//we display a image of a cat
+				<img id="grass_image" src="${grassPath}" alt="grass" width="100" height="100">
 				<script nonce="${nonce}" src="${scriptUri}"></script>
-				
-			
 			</body>
 			</html>`;
 	}

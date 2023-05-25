@@ -35,16 +35,6 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 		};
 
 		webviewView.webview.html = this._getHtmlForWebview(webviewView.webview);
-
-		webviewView.webview.onDidReceiveMessage(data => {
-			switch (data.type) {
-				case 'colorSelected':
-					{
-						vscode.window.activeTextEditor?.insertSnippet(new vscode.SnippetString(`#${data.value}`));
-						break;
-					}
-			}
-		});
 	}
 
 	private _getHtmlForWebview(webview: vscode.Webview) {
@@ -59,15 +49,12 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 			'cat9.png',
 			'cat10.png',
 			'cat11.png',
-			'graou.png',
 		];
 		const generateRandomCatPath = () => {
 			const catIndex = Math.floor(Math.random() * catArray.length);
 			return webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', catArray[catIndex]));
 		};
 		const catPath = generateRandomCatPath();
-		// Get the local path to main script run in the webview, then convert it to a uri we can use in the webview.
-		
 		const citationArray = [
 			'Coding like poetry should be short and concise. <br> <strong> Shawn Wildermuth </strong>',
 			'It’s not a bug; it’s an undocumented feature. <br> <strong> Anonymous </strong>',
@@ -101,20 +88,11 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 			<html lang="en">
 			<head>
 				<meta charset="UTF-8">
-
-				<!--
-					Use a content security policy to only allow loading styles from our extension directory,
-					and only allow scripts that have a specific nonce.
-					(See the 'webview-sample' extension sample for img-src content security policy examples)
-				-->
 				<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource}; script-src 'nonce-${nonce}'; img-src ${webview.cspSource} ${catPath};">
-
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 				<link href="${styleResetUri}" rel="stylesheet">
 				<link href="${styleVSCodeUri}" rel="stylesheet">
 				<link href="${styleMainUri}" rel="stylesheet">
-
 				<title>Cat Colors</title>
 			</head>
 			<body>
@@ -124,8 +102,6 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 				<div id="citation">
 					${citation}
 				</div>
-
-				
 			</body>
 			</html>`;
 	}

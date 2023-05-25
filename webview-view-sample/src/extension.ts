@@ -69,14 +69,13 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 			this._view.webview.postMessage({ type: 'clearColors' });
 		}
 	}
-	
+
 	private _getHtmlForWebview(webview: vscode.Webview) {
 		const catArray = [
 			'cat2.png',
 			'cat3.png',
 			'cat4.png',
 			'graou.png',
-
 		];
 		//we create the catPath variable to store the path to the cat image; and the generateRandomCatPath function to generate a random cat image path.
 		
@@ -96,7 +95,7 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 
 		// Use a nonce to only allow a specific script to be run.
 		const nonce = getNonce();
-		
+
 		return `<!DOCTYPE html>
 			<html lang="en">
 			<head>
@@ -118,11 +117,14 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 				<title>Cat Colors</title>
 			</head>
 			<body>
-				<button class="add-color-button">Change Cat</button>
+				<ul class="color-list">
+				</ul>
+
+				<button class="add-color-button">Add Color</button>
 				<div id="cats">
 					<img id="cat" src="${catPath}">
 				</div>
-				
+
 				<script nonce="${nonce}" src="${scriptUri}"></script>
 			</body>
 			</html>`;

@@ -4,7 +4,7 @@
 // It cannot access the main VS Code APIs directly.
 (function () {
     const vscode = acquireVsCodeApi();
-    //we put the path to the images in the array
+
     const oldState = vscode.getState() || { colors: [] };
 
     /** @type {Array<{ value: string }>} */
@@ -68,6 +68,17 @@
                 updateColorList(colors);
             });
             li.appendChild(input);
+            //we add the word "color" to the label to make it easier to find in the DOM
+            const label = document.createElement('label');
+            label.className = 'color-label';
+            label.textContent = 'color';
+            li.appendChild(label);
+            //we create a img with the src "media/cat2.png" and the class "cat"
+            const img = document.createElement('img');
+            img.className = 'cat';
+            img.src = 'media/cat2.png';
+            li.appendChild(img);
+
 
             ul.appendChild(li);
         }
@@ -90,10 +101,10 @@
         const colors = ['020202', 'f1eeee', 'a85b20', 'daab70', 'efcb99'];
         return colors[Math.floor(Math.random() * colors.length)];
     }
+
     function addColor() {
         colors.push({ value: getNewCalicoColor() });
         updateColorList(colors);
     }
 }());
-
 

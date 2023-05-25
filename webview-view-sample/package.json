@@ -1,13 +1,13 @@
 {
-	"name": "calico-colors",
-	"description": "Calico Colors - A Webview View API Sample",
-	"version": "0.0.1",
-	"publisher": "vscode-samples",
+	"name": "cat-wisdom",
+	"description": "CatWisdom, your daily dose of cat-coding wisdom",
+	"version": "0.0.2",
+	"publisher": "Claq",
 	"private": true,
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/Microsoft/vscode-extension-samples"
+		"url": "https://github.com/Claquettes/vscode-extension-samples"
 	},
 	"engines": {
 		"vscode": "^1.74.0"
@@ -20,8 +20,8 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:calicoColors.addColor",
-		"onCommand:calicoColors.clearColors"
+		"onCommand:CatWisdom.addColor",
+		"onCommand:CatWisdom.clearColors"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -29,19 +29,19 @@
 			"explorer": [
 				{
 					"type": "webview",
-					"id": "calicoColors.colorsView",
-					"name": "Calico Colors"
+					"id": "CatWisdom.colorsView",
+					"name": "CatWisdom"
 				}
 			]
 		},
 		"commands": [
 			{
-				"command": "calicoColors.addColor",
-				"category": "Calico Colors",
+				"command": "CatWisdom.addColor",
+				"category": "CatWisdom",
 				"title": "Add Color"
 			},
 			{
-				"command": "calicoColors.clearColors",
+				"command": "CatWisdom.clearColors",
 				"category": "Calico Colors",
 				"title": "Clear Colors",
 				"icon": "$(clear-all)"
@@ -50,9 +50,9 @@
 		"menus": {
 			"view/title": [
 				{
-					"command": "calicoColors.clearColors",
+					"command": "CatWisdom.clearColors",
 					"group": "navigation",
-					"when": "view == calicoColors.colorsView"
+					"when": "view == CatWisdom.colorsView"
 				}
 			]
 		}

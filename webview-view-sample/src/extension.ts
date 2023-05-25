@@ -7,15 +7,6 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(
 		vscode.window.registerWebviewViewProvider(ColorsViewProvider.viewType, provider));
 
-	context.subscriptions.push(
-		vscode.commands.registerCommand('CatWisdom.addColor', () => {
-			provider.addColor();
-		}));
-
-	context.subscriptions.push(
-		vscode.commands.registerCommand('CatWisdom.clearColors', () => {
-			provider.clearColors();
-		}));
 }
 
 class ColorsViewProvider implements vscode.WebviewViewProvider {
@@ -55,19 +46,6 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 					}
 			}
 		});
-	}
-
-	public addColor() {
-		if (this._view) {
-			this._view.show?.(true); // `show` is not implemented in 1.49 but is for 1.50 insiders
-			this._view.webview.postMessage({ type: 'addColor' });
-		}
-	}
-
-	public clearColors() {
-		if (this._view) {
-			this._view.webview.postMessage({ type: 'clearColors' });
-		}
 	}
 
 	private _getHtmlForWebview(webview: vscode.Webview) {

@@ -33,28 +33,6 @@
 					"name": "CatWisdom"
 				}
 			]
-		},
-		"commands": [
-			{
-				"command": "CatWisdom.addColor",
-				"category": "CatWisdom",
-				"title": "Add Color"
-			},
-			{
-				"command": "CatWisdom.clearColors",
-				"category": "Calico Colors",
-				"title": "Clear Colors",
-				"icon": "$(clear-all)"
-			}
-		],
-		"menus": {
-			"view/title": [
-				{
-					"command": "CatWisdom.clearColors",
-					"group": "navigation",
-					"when": "view == CatWisdom.colorsView"
-				}
-			]
 		}
 	},
 	"scripts": {

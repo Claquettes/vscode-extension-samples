@@ -6,7 +6,6 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(
 		vscode.window.registerWebviewViewProvider(ColorsViewProvider.viewType, provider));
-
 }
 
 class ColorsViewProvider implements vscode.WebviewViewProvider {
@@ -126,7 +125,7 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 					${citation}
 				</div>
 
-				<script nonce="${nonce}" src="${scriptUri}"></script>
+				
 			</body>
 			</html>`;
 	}

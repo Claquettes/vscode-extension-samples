@@ -92,18 +92,18 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 		// Get the local path to main script run in the webview, then convert it to a uri we can use in the webview.
 		
 		const citationArray = [
-			'Coding like poetry should be short and concise. ― Santosh Kalwar',
-			'It’s not a bug; it’s an undocumented feature. ― Anonymous',
-			'First, solve the problem. Then, write the code. – John Johnson',
-			'Code is like humor. When you have to explain it, it’s bad. – Cory House',
-			'Fix the cause, not the symptom. – Steve Maguire',
-			'Optimism is an occupational hazard of programming: feedback is the treatment. – Kent Beck',
-			'Make it work, make it right, make it fast. – Kent Beck',
-			'Clean code always looks like it was written by someone who cares. — Robert C. Martin',
-			'Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live. — Rick Osborne',
-			'Any fool can write code that a computer can understand. Good programmers write code that humans can understand. ― Martin Fowler',
-			'Programming is the art of telling another human being what one wants the computer to do. ― Donald Ervin Knuth',
-			'Software is like sex: it’s better when it’s free. – Linus Torvalds',
+			'Coding like poetry should be short and concise. <br> <strong> Shawn Wildermuth </strong>',
+			'It’s not a bug; it’s an undocumented feature. <br> <strong> Anonymous </strong>',
+			'First, solve the problem. Then, write the code. <br> <strong> John Johnson </strong>',
+			'Code is like humor. When you have to explain it, it’s bad. <br> <strong> Cory House </strong>',
+			'Fix the cause, not the symptom. <br> <strong> Steve Maguire </strong>',
+			'Optimism is an occupational hazard of programming: feedback is the treatment. <br> <strong> Kent Beck </strong>',
+			'Make it work, make it right, make it fast. <br> <strong> Kent Beck </strong>',
+			'Clean code always looks like it was written by someone who cares. <br> <strong> Michael Feathers </strong>',
+			'Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live. <br> <strong> Rick Osborne </strong>',
+			'Any fool can write code that a computer can understand. Good programmers write code that humans can understand. <br> <strong> Martin Fowler </strong>',
+			'Programming is the art of telling another human being what one wants the computer to do. <br> <strong> Donald Knuth </strong>',
+			'Software is like sex: it’s better when it’s free. <br> <strong> Linus Torvalds </strong>',
 		];
 
 		const generateRandomCitation = () => {

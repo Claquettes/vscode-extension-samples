@@ -75,6 +75,13 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 			'cat2.png',
 			'cat3.png',
 			'cat4.png',
+			'cat5.jpg',
+			'cat6.png',
+			'cat7.png',
+			'cat8.png',
+			'cat9.png',
+			'cat10.png',
+			'cat11.png',
 			'graou.png',
 		];
 		const generateRandomCatPath = () => {
@@ -85,8 +92,18 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 		// Get the local path to main script run in the webview, then convert it to a uri we can use in the webview.
 		
 		const citationArray = [
-			'“I have lived with several Zen masters -- all of them cats.” ― Eckhart Tolle',
-			'“Cats are connoisseurs of comfort.” ― James Herriot'
+			'Coding like poetry should be short and concise. ― Santosh Kalwar',
+			'It’s not a bug; it’s an undocumented feature. ― Anonymous',
+			'First, solve the problem. Then, write the code. – John Johnson',
+			'Code is like humor. When you have to explain it, it’s bad. – Cory House',
+			'Fix the cause, not the symptom. – Steve Maguire',
+			'Optimism is an occupational hazard of programming: feedback is the treatment. – Kent Beck',
+			'Make it work, make it right, make it fast. – Kent Beck',
+			'Clean code always looks like it was written by someone who cares. — Robert C. Martin',
+			'Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live. — Rick Osborne',
+			'Any fool can write code that a computer can understand. Good programmers write code that humans can understand. ― Martin Fowler',
+			'Programming is the art of telling another human being what one wants the computer to do. ― Donald Ervin Knuth',
+			'Software is like sex: it’s better when it’s free. – Linus Torvalds',
 		];
 
 		const generateRandomCitation = () => {
@@ -94,16 +111,7 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 			return citationArray[citationIndex];
 		};
 		const citation = generateRandomCitation();
-
-
-
-
-
 		const scriptUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'main.js'));
-		
-
-
-
 		// Do the same for the stylesheet.
 		const styleResetUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'reset.css'));
 		const styleVSCodeUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'vscode.css'));

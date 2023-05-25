@@ -77,16 +77,32 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 			'cat4.png',
 			'graou.png',
 		];
-		//we create the catPath variable to store the path to the cat image; and the generateRandomCatPath function to generate a random cat image path.
-		
 		const generateRandomCatPath = () => {
 			const catIndex = Math.floor(Math.random() * catArray.length);
 			return webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', catArray[catIndex]));
 		};
-
 		const catPath = generateRandomCatPath();
 		// Get the local path to main script run in the webview, then convert it to a uri we can use in the webview.
+		
+		const citationArray = [
+			'“I have lived with several Zen masters -- all of them cats.” ― Eckhart Tolle',
+			'“Cats are connoisseurs of comfort.” ― James Herriot'
+		];
+
+		const generateRandomCitation = () => {
+			const citationIndex = Math.floor(Math.random() * citationArray.length);
+			return citationArray[citationIndex];
+		};
+		const citation = generateRandomCitation();
+
+
+
+
+
 		const scriptUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'main.js'));
+		
+
+
 
 		// Do the same for the stylesheet.
 		const styleResetUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'reset.css'));
@@ -117,12 +133,11 @@ class ColorsViewProvider implements vscode.WebviewViewProvider {
 				<title>Cat Colors</title>
 			</head>
 			<body>
-				<ul class="color-list">
-				</ul>
-
-				<button class="add-color-button">Add Color</button>
 				<div id="cats">
 					<img id="cat" src="${catPath}">
+				</div>
+				<div id="citation">
+					${citation}
 				</div>
 
 				<script nonce="${nonce}" src="${scriptUri}"></script>
